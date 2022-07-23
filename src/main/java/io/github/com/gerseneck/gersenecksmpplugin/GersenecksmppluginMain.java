@@ -1,17 +1,15 @@
 package io.github.com.gerseneck.gersenecksmpplugin;
 
+import io.github.com.gerseneck.gersenecksmpplugin.commands.CheckDurability;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class GersenecksmppluginMain extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // Plugin startup logic
 
-    }
+        this.getCommand("durability").setExecutor(new CheckDurability());
 
-    @Override
-    public void onDisable() {
-        // Plugin shutdown logic
+        System.out.println("§2Plugin Ready");
     }
 }

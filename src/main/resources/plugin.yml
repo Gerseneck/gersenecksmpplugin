@@ -4,3 +4,15 @@ main: io.github.com.gerseneck.gersenecksmpplugin.GersenecksmppluginMain
 api-version: 1.19
 authors: [ Gerseneck ]
 description: Plugin for Gerseneck Private SMP
+
+commands:
+  durability:
+    description: "Checks the durability of the Item left."
+    usage: "Usage: /durability [<hand>, <offhand>, <helmet>, <chestplate>, <leggings>, <boots>]"
+    permission: "gersenecksmp.durability"
+    permission-message: "§4 You are not allowed to use this command."
+    aliases: [dura, db, d]
+
+permissions:
+  gersnecksmp.durability:
+    default: true
