@@ -14,5 +14,5 @@ commands:
     aliases: [dura, db, d]
 
 permissions:
-  gersnecksmp.durability:
+  gersenecksmp.durability:
     default: true
