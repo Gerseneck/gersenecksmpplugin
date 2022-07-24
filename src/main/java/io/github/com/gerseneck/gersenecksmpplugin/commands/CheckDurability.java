@@ -45,6 +45,7 @@ public class CheckDurability implements CommandExecutor {
             int maxDurability = im.getType().getMaxDurability();
             int damage = ((Damageable) im.getItemMeta()).getDamage();
             sender.sendMessage(String.format("Item has %d/%d Durability left.", maxDurability - damage, maxDurability));
+            return true;
         }
         return false;
     }
