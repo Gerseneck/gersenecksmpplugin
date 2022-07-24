@@ -1,5 +1,6 @@
 package io.github.com.gerseneck.gersenecksmpplugin.commands;
 
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -22,8 +23,8 @@ public class CheckDurability implements CommandExecutor {
                 return true;
             }
             PlayerInventory inv = ((Player) sender).getInventory();
-            ItemStack im = null;
-            if (args[0].equalsIgnoreCase("hand")) { im = inv.getItemInHand(); }
+            ItemStack im;
+            if (args[0].equalsIgnoreCase("hand")) { im = inv.getItemInMainHand(); }
             else if (args[0].equalsIgnoreCase("offhand")) { im = inv.getItemInOffHand(); }
             else if (args[0].equalsIgnoreCase("helmet")) { im = inv.getHelmet(); }
             else if (args[0].equalsIgnoreCase("chestplate")) { im = inv.getChestplate(); }
@@ -33,7 +34,7 @@ public class CheckDurability implements CommandExecutor {
                 sender.sendMessage("§4Specify a slot to check! HAND, OFFHAND, HELMET, CHESTPLATE, LEGGINGS, BOOTS.");
                 return true;
             }
-            if (im == null) {
+            if (im.getType() == Material.AIR) {
                 sender.sendMessage("§3There are no items in this slot.");
                 return true;
             }
