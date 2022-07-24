@@ -58,7 +58,7 @@ public class CheckDurability implements CommandExecutor {
             int maxDurability = im.getType().getMaxDurability();
             int damage = ((Damageable) im.getItemMeta()).getDamage();
             String color;
-            float percentDura = (float) maxDurability - damage / (float) maxDurability;
+            float percentDura = (float) (maxDurability - damage) / (float) maxDurability;
             if (percentDura >= 0.66) { color = "§2"; }
             else if (percentDura >= 0.33) { color = "§6"; }
             else { color = "§c"; }
