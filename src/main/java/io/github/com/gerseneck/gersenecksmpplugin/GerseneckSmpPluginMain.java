@@ -9,5 +9,7 @@ public final class GerseneckSmpPluginMain extends JavaPlugin {
     public void onEnable() {
 
         this.getCommand("durability").setExecutor(new CheckDurability());
+
+        this.getLogger().info("§2[Gerseneck SMP]: Plugin Enabled.");
     }
 }

@@ -1,6 +1,6 @@
 name: Gersenecksmpplugin
 version: '${project.version}'
-main: io.github.com.gerseneck.gersenecksmpplugin.GersenecksmppluginMain
+main: io.github.com.gerseneck.gersenecksmpplugin.GerseneckSmpPluginMain
 api-version: 1.19
 authors: [ Gerseneck ]
 description: Plugin for Gerseneck Private SMP
