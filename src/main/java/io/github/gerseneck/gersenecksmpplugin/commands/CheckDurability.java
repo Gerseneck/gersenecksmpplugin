@@ -1,4 +1,4 @@
-package io.github.com.gerseneck.gersenecksmpplugin.commands;
+package io.github.gerseneck.gersenecksmpplugin.commands;
 
 import org.bukkit.Material;
 import org.bukkit.command.Command;
