@@ -24,17 +24,30 @@ public class CheckDurability implements CommandExecutor {
             }
             PlayerInventory inv = ((Player) sender).getInventory();
             ItemStack im;
-            if (args[0].equalsIgnoreCase("hand")) { im = inv.getItemInMainHand(); }
-            else if (args[0].equalsIgnoreCase("offhand")) { im = inv.getItemInOffHand(); }
-            else if (args[0].equalsIgnoreCase("helmet")) { im = inv.getHelmet(); }
-            else if (args[0].equalsIgnoreCase("chestplate")) { im = inv.getChestplate(); }
-            else if (args[0].equalsIgnoreCase("leggings")) { im = inv.getLeggings(); }
-            else if (args[0].equalsIgnoreCase("boots")) { im = inv.getBoots(); }
-            else {
-                sender.sendMessage("§4Specify a slot to check! HAND, OFFHAND, HELMET, CHESTPLATE, LEGGINGS, BOOTS.");
-                return true;
+            switch (args[0].toLowerCase()) {
+                case "hand":
+                    im = inv.getItemInMainHand();
+                    break;
+                case "offhand":
+                    im = inv.getItemInOffHand();
+                    break;
+                case "helmet":
+                    im = inv.getHelmet();
+                    break;
+                case "chestplate":
+                    im = inv.getChestplate();
+                    break;
+                case "leggings":
+                    im = inv.getLeggings();
+                    break;
+                case "boots":
+                    im = inv.getBoots();
+                    break;
+                default:
+                    sender.sendMessage("§4Specify a slot to check! HAND, OFFHAND, HELMET, CHESTPLATE, LEGGINGS, BOOTS.");
+                    return true;
             }
-            if (im.getType() == Material.AIR) {
+            if (im == null || im.getType() == Material.AIR) {
                 sender.sendMessage("§3There are no items in this slot.");
                 return true;
             }
@@ -44,7 +57,12 @@ public class CheckDurability implements CommandExecutor {
             }
             int maxDurability = im.getType().getMaxDurability();
             int damage = ((Damageable) im.getItemMeta()).getDamage();
-            sender.sendMessage(String.format("Item has %d/%d Durability left.", maxDurability - damage, maxDurability));
+            String color;
+            float percentDura = (float) maxDurability - damage / (float) maxDurability;
+            if (percentDura >= 0.66) { color = "§2"; }
+            else if (percentDura >= 0.33) { color = "§6"; }
+            else { color = "§4"; }
+            sender.sendMessage(String.format("Item has %s%d/%d§r Durability left.", color, maxDurability - damage, maxDurability));
             return true;
         }
         return false;
