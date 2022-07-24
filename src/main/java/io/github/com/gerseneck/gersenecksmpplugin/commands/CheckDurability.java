@@ -34,7 +34,7 @@ public class CheckDurability implements CommandExecutor {
                 return true;
             }
             if (im == null) {
-                sender.sendMessage("§3This Item does not have any durability.");
+                sender.sendMessage("§3There are no items in this slot.");
                 return true;
             }
             if (!(im.getItemMeta() instanceof Damageable)) {
