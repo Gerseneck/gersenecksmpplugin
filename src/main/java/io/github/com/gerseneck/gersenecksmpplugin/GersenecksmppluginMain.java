@@ -9,7 +9,5 @@ public final class GersenecksmppluginMain extends JavaPlugin {
     public void onEnable() {
 
         this.getCommand("durability").setExecutor(new CheckDurability());
-
-        System.out.println("§2Plugin Ready");
     }
 }

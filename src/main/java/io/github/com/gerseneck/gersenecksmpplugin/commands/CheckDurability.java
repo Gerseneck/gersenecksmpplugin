@@ -33,12 +33,17 @@ public class CheckDurability implements CommandExecutor {
                 sender.sendMessage("§4Specify a slot to check! HAND, OFFHAND, HELMET, CHESTPLATE, LEGGINGS, BOOTS.");
                 return true;
             }
+            if (im == null) {
+                sender.sendMessage("§3This Item does not have any durability.");
+                return true;
+            }
             if (!(im.getItemMeta() instanceof Damageable)) {
                 sender.sendMessage("§3This Item does not have any durability.");
                 return true;
             }
-            int health = (int) ((Damageable) im.getItemMeta()).getDamage();
-            sender.sendMessage(String.format("Item %s has %d Durability left.", im.getItemMeta().getDisplayName(), health));
+            int maxDurability = im.getType().getMaxDurability();
+            int damage = ((Damageable) im.getItemMeta()).getDamage();
+            sender.sendMessage(String.format("Item has %d/%d Durability left.", maxDurability - damage, maxDurability));
         }
         return false;
     }
