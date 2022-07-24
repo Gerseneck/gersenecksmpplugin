@@ -14,7 +14,7 @@ public class CheckDurability implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 0) {
-            sender.sendMessage("§4Specify a slot to check! HAND, OFFHAND, HELMET, CHESTPLATE, LEGGINGS, BOOTS.");
+            sender.sendMessage("§cSpecify a slot to check! HAND, OFFHAND, HELMET, CHESTPLATE, LEGGINGS, BOOTS.");
             return true;
         }
         if (args.length == 1) {
@@ -44,7 +44,7 @@ public class CheckDurability implements CommandExecutor {
                     im = inv.getBoots();
                     break;
                 default:
-                    sender.sendMessage("§4Specify a slot to check! HAND, OFFHAND, HELMET, CHESTPLATE, LEGGINGS, BOOTS.");
+                    sender.sendMessage("§cSpecify a slot to check! HAND, OFFHAND, HELMET, CHESTPLATE, LEGGINGS, BOOTS.");
                     return true;
             }
             if (im == null || im.getType() == Material.AIR) {
@@ -61,8 +61,8 @@ public class CheckDurability implements CommandExecutor {
             float percentDura = (float) maxDurability - damage / (float) maxDurability;
             if (percentDura >= 0.66) { color = "§2"; }
             else if (percentDura >= 0.33) { color = "§6"; }
-            else { color = "§4"; }
-            sender.sendMessage(String.format("Item has %s%d/%d§r Durability left.", color, maxDurability - damage, maxDurability));
+            else { color = "§c"; }
+            sender.sendMessage(String.format("Your %s has %s%d/%d§r Durability left.", args[0].toUpperCase(), color, maxDurability - damage, maxDurability));
             return true;
         }
         return false;
