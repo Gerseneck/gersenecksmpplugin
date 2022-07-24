@@ -62,7 +62,7 @@ public class CheckDurability implements CommandExecutor {
             if (percentDura >= 0.66) { color = "§2"; }
             else if (percentDura >= 0.33) { color = "§6"; }
             else { color = "§c"; }
-            sender.sendMessage(String.format("Your item in %s slot has %s%d/%d§r Durability left.", args[0].toUpperCase(), color, maxDurability - damage, maxDurability));
+            sender.sendMessage(String.format("Your §9[%s]§r has %s%d/%d§r Durability left.", im.getType().toString().replaceAll("_"," "), color, maxDurability - damage, maxDurability));
             return true;
         }
         return false;
