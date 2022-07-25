@@ -1,6 +1,7 @@
 package io.github.gerseneck.gersenecksmpplugin.commands;
 
 import io.github.gerseneck.gersenecksmpplugin.GerseneckSmpPluginMain;
+import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -21,7 +22,10 @@ public class PlayerOnline implements CommandExecutor {
         }
         String text = null;
         for (Player playerOnline : sender.getServer().getOnlinePlayers()) {
+            if (playerOnline.getGameMode() == GameMode.SPECTATOR &&
+                    !plugin.getConfig().getBoolean("playerOnlineCommand.showSpectator")) { continue; }
             String name = playerOnline.getName();
+            if (playerOnline.getGameMode() == GameMode.SPECTATOR) { text += "§o§8" + name + "§r"; }
             text += name;
             if (plugin.getConfig().getBoolean("playerOnlineCommand.showHealth")) {
                 int health = (int) playerOnline.getHealth();

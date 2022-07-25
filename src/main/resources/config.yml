@@ -1,4 +1,5 @@
 ## gerseneck smp plugin config file
 
 playerOnlineCommand:
-  showHealth: true
+  showHealth: false
+  showSpectators: true
