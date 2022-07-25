@@ -25,7 +25,7 @@ public class PlayerOnline implements CommandExecutor {
             text += name;
             if (plugin.getConfig().getBoolean("playerOnlineCommand.showHealth")) {
                 int health = (int) playerOnline.getHealth();
-                text += " §6" + health + " HP";
+                text += " §6" + health + " HP§r";
             }
             text += "\n";
         };
