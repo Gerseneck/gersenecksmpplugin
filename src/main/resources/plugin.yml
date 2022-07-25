@@ -12,7 +12,15 @@ commands:
     permission: "gersenecksmp.durability"
     permission-message: "§4 You are not allowed to use this command."
     aliases: [dura, db, d]
+  online-players:
+    description: "Prints out all the online players."
+    usage: "Usage: online-players"
+    permission: "gersenecksmp.online-players"
+    permission-message: "§4 You are not allowed to use this command."
+    aliases: [online, players, ol, p]
 
 permissions:
   gersenecksmp.durability:
+    default: true
+  gersenecksmp.online-players:
     default: true

@@ -1,0 +1,4 @@
+## gerseneck smp plugin config file
+
+playerOnlineCommand:
+  showHealth: true
