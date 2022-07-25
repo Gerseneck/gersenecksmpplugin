@@ -17,17 +17,19 @@ public class PlayerOnline implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender.getServer().getOnlinePlayers().size() == 0) {
             sender.sendMessage("§3There are no Players online!");
+            return false;
         }
+        String text = null;
         for (Player playerOnline : sender.getServer().getOnlinePlayers()) {
-            String text;
             String name = playerOnline.getName();
-            text = name;
+            text += name;
             if (plugin.getConfig().getBoolean("playerOnlineCommand.showHealth")) {
                 int health = (int) playerOnline.getHealth();
-                text += " " + health + " HP";
+                text += " §6" + health + " HP";
             }
-            sender.sendMessage(text);
+            text += "\n";
         };
+        sender.sendMessage(text);
         return true;
     }
 }
