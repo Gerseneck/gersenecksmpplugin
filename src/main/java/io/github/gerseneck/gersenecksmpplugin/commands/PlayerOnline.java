@@ -18,14 +18,13 @@ public class PlayerOnline implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender.getServer().getOnlinePlayers().size() == 0) {
             sender.sendMessage("§3There are no Players online!");
-            return false;
+            return true;
         }
-        String text = null;
+        String text = "";
         for (Player playerOnline : sender.getServer().getOnlinePlayers()) {
             if (playerOnline.getGameMode() == GameMode.SPECTATOR &&
                     !plugin.getConfig().getBoolean("playerOnlineCommand.showSpectator")) { continue; }
             String name = playerOnline.getName();
-            if (playerOnline.getGameMode() == GameMode.SPECTATOR) { text += "§o§8" + name + "§r"; }
             text += name;
             if (plugin.getConfig().getBoolean("playerOnlineCommand.showHealth")) {
                 int health = (int) playerOnline.getHealth();
