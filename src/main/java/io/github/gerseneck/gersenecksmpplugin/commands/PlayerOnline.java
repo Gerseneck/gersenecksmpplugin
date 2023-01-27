@@ -20,20 +20,20 @@ public class PlayerOnline implements CommandExecutor {
             sender.sendMessage("§3There are no Players online!");
             return true;
         }
+
         for (Player playerOnline : sender.getServer().getOnlinePlayers()) {
-            String text = "";
-            String name = playerOnline.getName();
-            if (playerOnline.getGameMode() == GameMode.SPECTATOR &&
-                    !plugin.getConfig().getBoolean("playerOnlineCommand.showSpectator")) {
+            if (playerOnline.getGameMode() == GameMode.SPECTATOR) {
+                if (!plugin.getConfig().getBoolean("playerOnlineCommand.showSpectators")) {
+                    continue;
+                }
+                sender.sendMessage("§3" + playerOnline.getName() + " §7(Spectator)");
                 continue;
             }
-            if (playerOnline.getGameMode() == GameMode.SPECTATOR) { text += "§oSP§r"; }
-            text += name;
             if (plugin.getConfig().getBoolean("playerOnlineCommand.showHealth")) {
-                int health = (int) playerOnline.getHealth();
-                text += " §6" + health + "HP§r";
+                sender.sendMessage("§3" + playerOnline.getName() + " §4Health: " + playerOnline.getHealth());
+                continue;
             }
-            sender.sendMessage(text);
+            sender.sendMessage("§3" + playerOnline.getName());
         }
         return true;
     }
