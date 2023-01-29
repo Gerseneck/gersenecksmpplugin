@@ -8,7 +8,6 @@ import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
-import org.bukkit.inventory.meta.ItemMeta;
 
 public class CheckDurability implements CommandExecutor {
 
@@ -26,14 +25,14 @@ public class CheckDurability implements CommandExecutor {
                           inv.getLeggings(),
                           inv.getBoots()};
         for (ItemStack item : im) {
-			if (item == null) {
-				continue;
-			}
-            if (item.getType() == Material.AIR) {
-				continue;
-			}
-			String color;
-            String itemName = item.getType().toString().replaceAll("_"," ");
+
+			if (item == null) { continue; }
+            if (item.getType() == Material.AIR ) { continue; }
+            if (!(item.getItemMeta() instanceof Damageable)) { continue;}
+
+            String color;
+            String itemName = (item.getItemMeta().hasDisplayName()) ? item.getItemMeta().getDisplayName() :
+                    item.getType().toString().replaceAll("_"," ");
 
             int maxDurability = item.getType().getMaxDurability();
             int damage = ((Damageable) item.getItemMeta()).getDamage();
@@ -45,6 +44,7 @@ public class CheckDurability implements CommandExecutor {
             else { color = "§c"; }
 
             sender.sendMessage(String.format("§9[%s]§r: %s%d/%d§r Durability", itemName, color, maxDurability - damage, maxDurability));
+
         }
         return true;
     }

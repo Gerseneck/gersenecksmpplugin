@@ -16,6 +16,7 @@ public class PlayerOnline implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+
         if (sender.getServer().getOnlinePlayers().size() == 0) {
             sender.sendMessage("§3There are no Players online!");
             return true;
